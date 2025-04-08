@@ -5,6 +5,11 @@ import io
 
 app = Flask(__name__)
 
+# Endpoint /test
+@app.route("/test", methods=["GET"])
+def test():
+    return "API is working"
+
 @app.route("/api/palette", methods=["POST"])
 def get_palette():
     if 'image' not in request.files:
@@ -18,11 +23,7 @@ def get_palette():
 
     return jsonify({"palette": hex_palette})
 
-@app.route("/test", methods=["GET"])
-def test():
-    return "API is working"
-
-# La funzione che Vercel si aspetta
+# Funzione che Vercel si aspetta
 def main(request):
     with app.app_context():
         return app.full_dispatch_request()
