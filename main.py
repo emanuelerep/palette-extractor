@@ -18,7 +18,7 @@ def get_palette():
 
     return jsonify({"palette": hex_palette})
 
-# Questa è la funzione che Vercel si aspetta
-def handler(request):
+# La funzione che Vercel si aspetta
+def main(request):
     with app.app_context():
         return app.full_dispatch_request()
