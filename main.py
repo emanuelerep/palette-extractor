@@ -17,3 +17,8 @@ def get_palette():
     hex_palette = ['#%02x%02x%02x' % rgb for rgb in palette]
 
     return jsonify({"palette": hex_palette})
+
+# Questa è la funzione che Vercel si aspetta
+def handler(request):
+    with app.app_context():
+        return app.full_dispatch_request()
